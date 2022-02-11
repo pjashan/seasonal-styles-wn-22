@@ -6,8 +6,8 @@
   <meta name="robots" content="noindex,nofollow" />
   <meta name="viewport" content="width=device-width" />
   <link rel="stylesheet" href="css/default.css" />
-  <link href='http://fonts.googleapis.com/css?family=Damion' rel='stylesheet' type='text/css'>
-  <script src="http://code.jquery.com/jquery-latest.js"></script>
+  <link href='https://fonts.googleapis.com/css?family=Damion' rel='stylesheet' type='text/css'>
+  <script src="https://code.jquery.com/jquery-latest.js"></script>
   <style type="text/css">
   
     .masthead{
@@ -32,38 +32,45 @@
     }
 
     ul.colors{
-	display:inline-block;
-	margin-left:5%;
+    display:inline-block;
+    margin-left:5%;
 }
 
-
-
-  </style>
+li.seasons a{
+   /* color:red; */
+}
+    </style>
  </head>
  <body>
-	<header role="banner">
-	    <img src="images/four-seasons.png" alt="Seasonal Logo Goes Here" class="flexible" id="logo" />
-		<h1 class="masthead">Eddie Browser</h1>
-		<nav>
-			<ul>
-				<li class="seasons"><a href="Default">Default</a></li>
-				<li class="seasons"><a href="Spring">Spring</a></li>
-				<li class="seasons"><a href="Summer">Summer</a></li>
-				<li class="seasons"><a href="Fall">Fall</a></li>
-				<li class="seasons"><a href="Winter">Winter</a></li>
-			</ul>
-		</nav>
-	</header>
+    <header role="banner">
+        <img src="images/four-seasons.gif" alt="Seasonal Logo Goes Here" class="flexible" id="logo" />
+        <h1 class="masthead">Eddie Browser</h1>
+        <nav>
+            <ul>
+                <li class="seasons"><a href="Default">Default</a></li>
+                <li class="seasons"><a href="Spring">Spring</a></li>
+                <li class="seasons"><a href="Summer">Summer</a></li>
+                <li class="seasons"><a href="Fall">Fall</a></li>
+                <li class="seasons"><a href="Winter">Winter</a></li>
+            </ul>
+        </nav>
+    </header>
      
    <main class="wrapper">
     <header><h3>Outfitter for All Seasons!</h3></header>
-    
-    
-    <p style="color: brown; font-weight: bolder;">
-        This page uses jQuery to change the color,season, and clothing for each different season.
-        Whenever we click links then it will directly take to you different pages what you will click
-         and If you will click
-        on the default link then it will take you to the four-seasons page.
+    <p>
+    The colors of the seasonal images are as follows:
+        <ul class="colors">
+            <li>Spring: <b>#2B7129</b></li>
+            <li>Summer: <b>#EBA52B</b></li>  
+            <li>Fall: <b>#A81124</b></li>
+            <li>Winter: <b>#005393</b></li>
+        </ul>
+    </p>
+    <p>
+
+    <p>
+    Aesthetic gentrify YOLO McSweeney's typewriter single-origin coffee. Slow-carb hella listicle lomo, Helvetica single-origin coffee butcher stumptown. Chambray try-hard church-key mumblecore, tote bag PBR cardigan. Retro Austin Brooklyn, blog Intelligentsia gentrify jean shorts sartorial bicycle rights gastropub. Aesthetic wayfarers Pitchfork, tattooed Carles quinoa meh leggings distillery pork belly banjo. Umami cred lumbersexual skateboard, pork belly Tumblr vegan letterpress. Fixie bicycle rights butcher chillwave, gluten-free health goth Echo Park locavore whatever.
     <img src="images/300x400.png" alt="Season Wear Goes Here" id="wear" />
     </p>
     <p>
@@ -84,82 +91,77 @@
     </footer>
   </main>
   <script src="js/main.js"></script>
+  /*
+  change the src of the img with an id of logo
+  change the src of the img with the id of wear
+
+Spring: #2B7129
+Summer: #EBA52B
+Fall: #A81124
+Winter: #005393
+  */
   <script>
+     $("document").ready(function(){
+          $("li.seasons a ").click(function(e){
+              e.preventDefault();
 
+              let season = $(this).attr("href");
 
-    $('doucument').ready(function(){
-        $("li.seasons a").css("color","orange");
+              if (season == "Spring"){
+                $("#logo").attr("src", "images/spring.gif");
 
-        /* change pic with an id of logo to season
-        change pic with an id of wear to clothing 
-        */
+                $("#wear").attr("src", "images/spring-wear.jpg");
 
-        
+                $("html").css("background-color", "#2B7129");
 
-        $("li.seasons a").click(function(e){
-            e.preventDefault();
+                alert("It's getting a bit hotter outside!");
+              }
 
-            let season = $(this).attr("href");
-            switch(season){
-                case "Spring":
-                $("#wear").attr('src','images/spring-wear.jpg');
-                $("#logo").attr('src','images/spring.gif');
-                $("header > h3").css('color','#2B7129');
-                $("header > h3").text("Jump into our spring");
-                $('html').css('background-color', '#2B7129');
-                break;
-                case "Summer":
-                $("#wear").attr('src','images/summer-wear.jpg');
-                $("#logo").attr('src','images/summer.gif');
-                $("header > h3").css('color','#EBA52B');
-                $("header > h3").text("Jump into our summer");
-                $('html').css('background-color', '#EBA52B');
-                break;
-                case "Fall":
-                $("#wear").attr('src','images/fall-wear.jpg');
-                $("#logo").attr('src','images/fall.gif');
-                $("header > h3").css('color','#A81124');
-                $("header > h3").text("Jump into our fall");
-                $('html').css('background-color', '#A81124');
-                break;
-                case "Winter":
-                $("#wear").attr('src','images/winter-wear.jpg');
-                $("#logo").attr('src','images/winter.gif');
-                $("header > h3").css('color','#005393');
-                $("header > h3").text("Jump into our winter");
-                $('html').css('background-color', '#005393');
-                break;
-                default:
-                $("#wear").attr('src','images/four-seasons.jpg');
-                $("#logo").attr('src','images/four-seasons.png');
-                $("header > h3").text("Jump into our four-seasons");
-            }
+              else if (season == "Summer"){
+                $("#logo").attr("src", "images/summer.gif");
 
-            
-            
+                $("#wear").attr("src", "images/summer-wear.jpg");
+
+                $("html").css("background-color", "#EBA52B");
+
+                alert("Temperatures are higher than usual for obvious reasons!");
+              }
+
+              else if (season == "Fall"){
+                $("#logo").attr("src", "images/fall.gif");
+
+                $("#wear").attr("src", "images/fall-wear.jpg");
+
+                $("html").css("background-color", "#A81124");
+
+                alert("We're losing daylight, enjoy it while it lasts.");
+              }
+
+              else if (season == "Winter"){
+                $("#logo").attr("src", "images/winter.gif");
+
+                $("#wear").attr("src", "images/winter-wear.jpg");
+
+                $("html").css("background-color", "#005393");
+
+                alert("Wow, it's freezing.");
+              }
+              
+              else {
+                $("#logo").attr("src", "images/four-seasons.gif");
+
+                $("#wear").attr("src", "images/300x400.png");
+
+                $("html").css("background-color", "#ccc");
+
+                alert("You clicked on the Default page, BORING!");
+              }
            
-
-          
-           
-          
+         //alert("I'm clicked!");
         
-
-
-            
-
-      
-   
-
-
-         //alert(se/ason);
-      
-      
-      
-       
         });
     });
 
-
- </script>
+  </script>
   </body>
 </html>
